@@ -1,8 +1,8 @@
 /** Configuration centrale du site (générée par new-site.py). */
-export const SITE_URL = "https://de-brueckentage.example";
-export const SITE_NAMES: Record<string, string> = {"de": "DE Brückentage", "en": "DE Brückentage"};
+export const SITE_URL = "https://brueckentagplaner.de";
+export const SITE_NAMES: Record<string, string> = {"de": "Brückentagplaner", "en": "Brückentagplaner"};
 // Partie du nom affichée en couleur dans l'en-tête (RECETTE §10.3), « » pour aucune.
-export const BRAND_ACCENT = "Brückentage";
+export const BRAND_ACCENT = "planer";
 /** Locale des nombres et des dates : anglais britannique pour la version anglaise. */
 export const NUM_TAGS: Record<string, string> = {"de": "de-DE", "en": "en-GB"};
 export const LANG_TAGS: Record<string, string> = {"de": "de-DE", "en": "en-DE"};
@@ -20,7 +20,7 @@ export const AUTHOR_DESC: Record<string, string> = {"de": "Radif Partners liest 
  *  themes reellement traites par le site, pas une liste de mots-cles : un sujet
  *  declare ici sans page qui le couvre est une declaration fausse. */
 export const KNOWS_ABOUT: Record<string, string[]> = {"de": ["Gesetzliche Feiertage der 16 Bundesländer", "Brückentage und Urlaubsplanung", "Berechnung des Osterdatums (Gaußsche Osterformel)", "Sommerzeit und Zeitumstellung in Deutschland", "Arbeitstage und Kalenderwochen nach ISO 8601"], "en": ["Statutory public holidays of the 16 German states", "Bridge days and leave planning", "Computing the date of Easter (Gauss's algorithm)", "Daylight saving time in Germany", "Working days and ISO 8601 week numbers"]};
-export const CONTACT_EMAIL = "kontakt@de-brueckentage.example";
+export const CONTACT_EMAIL = "contact@brueckentagplaner.de";
 export const THEME_COLOR = '#B45309';
 export const LOGO_SYMBOL = 'BT';
 export const BING_VERIFY_CODE = '';

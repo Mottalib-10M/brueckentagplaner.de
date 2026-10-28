@@ -1,6 +1,6 @@
 {
- "name": "DE Brückentage",
- "short_name": "DE Brückentage",
+ "name": "Brückentagplaner",
+ "short_name": "Brückentagplaner",
  "description": "Brückentage und Feiertage 2026 bis 2028 für alle 16 Bundesländer: Optimierer für Urlaubstage, Arbeitstage, Kalender mit KW, Ostern, Pfingsten und Zeitumstellung.",
  "start_url": "/de/",
  "display": "standalone",

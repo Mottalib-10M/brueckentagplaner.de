@@ -1,0 +1,51 @@
+---
+/** Method: holiday rules, Easter, partial holidays, planner, tests, limits. Every figure from the engine. */
+import PageLayout from '../../layouts/PageLayout.astro';
+import { route } from '../../i18n/routes';
+import { KIT as K } from '../../lib/kit';
+import { srcLink } from '../../lib/helpers';
+import { breadcrumbSchema, webPageSchema } from '../../lib/seo';
+import { displayDate, formatNumber } from '../../lib/format';
+const lang = 'en';
+const path = route('method', lang);
+const title = 'Bridge days Germany 2027: method, rules and testing';
+const description = 'How we compute bridge days in Germany for 2027: holidays from 16 state acts, Easter by Gauss, partial holidays, an exact leave planner and automated tests.';
+const s = (k: string, t: string) => srcLink(k, lang, t);
+const d = (x: string) => displayDate(x, 'en-GB');
+const M = K.P.bayern_mh;
+const p10 = K.optimiere(2027, 'NW', 'std', 10);
+---
+<PageLayout title={title} description={description} lang={lang} jsonLd={[webPageSchema({ name: 'Method', description, path, lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'Method', path }])]} breadcrumbs={[{ label: 'Method' }]}>
+  <article class="prose prose-slate max-w-none">
+    <h1>How the calculators find holidays and bridge days</h1>
+    <p>Every calculator on this site runs in your browser. What you enter, state, leave days, municipality, stays on your device. The basis is the sixteen state holiday acts and the computation rules of the federal government and the PTB. Our last full reading: {d(K.P.retrieved_at)}.</p>
+
+    <h2>Each state's holidays</h2>
+    <p>Nine holidays apply in all sixteen states: New Year's Day, Good Friday, Easter Monday, 1 May, Ascension Day, Whit Monday, German Unity Day under <Fragment set:html={s('einigungsvertrag', 'Art. 2(2) of the Unification Treaty')} /> and both Christmas holidays. All the others come from state law, such as Epiphany in Baden-Württemberg, Bavaria and Saxony-Anhalt, International Women's Day in Berlin and Mecklenburg-Western Pomerania, World Children's Day in Thuringia or the Day of Repentance and Prayer in Saxony. Each rule sits in the engine with the year it starts: Reformation Day has been a holiday in Bremen, Hamburg, Lower Saxony and Schleswig-Holstein since 2018, Women's Day in Berlin since 2019 and in Mecklenburg-Western Pomerania since 2023. Berlin has a one-off holiday on 17 June 2028.</p>
+    <p>A holiday that falls on a Saturday or Sunday is not moved to a weekday in Germany; unlike the UK or Spain there is no substitute day. The calculators still list it, but it does not create a bridge.</p>
+
+    <h2>Easter and the movable holidays</h2>
+    <p>Easter Sunday is computed with <Fragment set:html={s('ostern-ptb', "Gauss's Easter formula in the PTB version")} />. Good Friday is two days earlier, Easter Monday one day later, Ascension Day 39 days, Whit Monday 50 days and Corpus Christi 60 days later. As a check, a second, independent algorithm (Meeus, Jones, Butcher) recomputes every year from 1600 to 2600; both agree in all thousand years. The Day of Repentance and Prayer is the Wednesday before 23 November, and the clocks change on the last Sunday of March and of October under <Fragment set:html={s('sozv', 'section 2 of the Summer Time Ordinance')} />.</p>
+
+    <h2>Holidays that apply in part of a state</h2>
+    <ul>
+      <li><strong>Assumption Day in Bavaria</strong>: a holiday in municipalities with a predominantly Catholic population. Under the determination of the <Fragment set:html={s('by-mh', 'State Office for Statistics')} /> based on the {M.zensus} census, that is {formatNumber(M.mit, 0, lang)} of {formatNumber(M.gemeinden, 0, lang)} municipalities since {d(M.stand)}. The municipality search shows each one.</li>
+      <li><strong>Augsburg Peace Festival</strong> on 8 August: within the city of Augsburg only, under <Fragment set:html={s('ftg-by', 'Art. 1(2) of the Bavarian act')} />.</li>
+      <li><strong>Corpus Christi in Saxony</strong>: in the Catholic municipalities of Lusatia listed in the <Fragment set:html={s('sn-fl', 'Corpus Christi ordinance')} />.</li>
+      <li><strong>Corpus Christi in Thuringia</strong>: under <Fragment set:html={s('ftg-th', 'section 10 ThürFGtG')} />, wherever the day was a holiday in 1994, mainly in the Eichsfeld. No official list of municipalities has been published, so the calculator lets you choose.</li>
+    </ul>
+
+    <h2>How the planner works</h2>
+    <p>The year is split into blocks: free blocks made of weekends and holidays, and working blocks of Mondays to Fridays. Taking every day of a working block off joins the two free blocks around it. The planner searches all combinations for the one that gives the most consecutive days off within your budget, and on a tie the one that uses fewer leave days. It is dynamic programming over every working block of the year, so the answer is exact, not a rule of thumb. Each chain of leave days must touch a holiday that falls on a weekday; an ordinary week off without a holiday is left over as "free to plan". Example, North Rhine-Westphalia 2027: {p10.urlaub} leave days give {p10.frei} days off in {p10.bloecke.length} blocks.</p>
+    <p>Leave days count only in the chosen year. A block that runs across New Year is counted with all its days off but uses only that year's leave. Christmas Eve and New Year's Eve are legally working days; if a collective agreement gives you those days off, set that under "More details".</p>
+
+    <h2>Working days and week numbers</h2>
+    <p>Working days are Monday to Friday minus the public holidays of the chosen place. Week numbers follow ISO 8601: week 1 is the week with the year's first Thursday. Statutory minimum leave follows <Fragment set:html={s('burlg3', 'section 3 of the Federal Leave Act')} /> (24 working days on a six-day week) and, pro rata, <Fragment set:html={s('burlg5', 'section 5')} />.</p>
+
+    <h2>Limits</h2>
+    <p>The calculators know nothing about company shutdowns, shift rotas or collective agreements. They cover statutory public holidays, not school holidays and not church days without a day off such as Maundy Thursday. Thuringia has no official municipality list for Corpus Christi.</p>
+
+    <h2>Updates</h2>
+    <p>We reread the state holiday acts regularly. A change goes live only once every test passes again. Report errors through the <a href={route('contact', lang)}>contact page</a>; how we correct is in the <a href={route('editorial', lang)}>editorial policy</a>.</p>
+  </article>
+</PageLayout>

@@ -1,0 +1,20 @@
+{
+ "accent": "#B45309",
+ "symbol": "BT",
+ "variants": [
+  {
+   "file": "og-de.png",
+   "title": "Brückentage 2027\nmit wenig Urlaub viel frei",
+   "subtitle": "16 Bundesländer · Feiertage 2026 bis 2028 · Urlaubs-Optimierer",
+   "badge": "Nach den Feiertagsgesetzen der Länder, Stand 28. Oktober 2026",
+   "brand": "DE Brückentage"
+  },
+  {
+   "file": "og-en.png",
+   "title": "Bridge days Germany 2027\nmore time off, fewer leave days",
+   "subtitle": "16 states · public holidays 2026 to 2028 · leave planner",
+   "badge": "From the state holiday acts, checked 28 October 2026",
+   "brand": "DE Brückentage"
+  }
+ ]
+}

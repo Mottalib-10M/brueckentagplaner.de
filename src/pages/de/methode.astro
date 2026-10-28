@@ -1,0 +1,51 @@
+---
+/** Methode : Feiertagsregeln, Ostern, Teil-Feiertage, Optimierer, Tests, Grenzen. Jede Zahl aus dem Rechenkern. */
+import PageLayout from '../../layouts/PageLayout.astro';
+import { route } from '../../i18n/routes';
+import { KIT as K } from '../../lib/kit';
+import { srcLink } from '../../lib/helpers';
+import { breadcrumbSchema, webPageSchema } from '../../lib/seo';
+import { displayDate, formatNumber } from '../../lib/format';
+const lang = 'de';
+const path = route('method', lang);
+const title = 'Brückentage 2027 berechnen: Methode, Regeln und Tests';
+const description = 'Wie wir Brückentage 2027 berechnen: Feiertage aus 16 Landesgesetzen, Ostern nach der Gaußschen Formel, Teil-Feiertage, exakter Optimierer, automatische Tests.';
+const s = (k: string, t: string) => srcLink(k, lang, t);
+const d = (x: string) => displayDate(x, 'de-DE');
+const M = K.P.bayern_mh;
+const p10 = K.optimiere(2027, 'NW', 'std', 10);
+---
+<PageLayout title={title} description={description} lang={lang} jsonLd={[webPageSchema({ name: 'Methode', description, path, lang }), breadcrumbSchema([{ name: 'Start', path: route('home', lang) }, { name: 'Methode', path }])]} breadcrumbs={[{ label: 'Methode' }]}>
+  <article class="prose prose-slate max-w-none">
+    <h1>Wie die Rechner Feiertage und Brückentage bestimmen</h1>
+    <p>Alle Rechner dieser Seite laufen in Ihrem Browser. Was Sie eingeben, Bundesland, Urlaubstage, Gemeinde, bleibt auf Ihrem Gerät. Grundlage sind die Feiertagsgesetze der Länder und die Rechenvorschriften von Bund und PTB. Stand unserer letzten Lesung: {d(K.P.retrieved_at)}.</p>
+
+    <h2>Die Feiertage jedes Landes</h2>
+    <p>Neun Feiertage gelten in allen sechzehn Ländern: Neujahr, Karfreitag, Ostermontag, der 1. Mai, Christi Himmelfahrt, Pfingstmontag, der Tag der Deutschen Einheit nach <Fragment set:html={s('einigungsvertrag', 'Art. 2 Abs. 2 Einigungsvertrag')} /> und die beiden Weihnachtstage. Alle anderen stehen in den Gesetzen der Länder, etwa Heilige Drei Könige in Baden-Württemberg, Bayern und Sachsen-Anhalt, der Frauentag in Berlin und Mecklenburg-Vorpommern, der Weltkindertag in Thüringen oder der Buß- und Bettag in Sachsen. Jede Regel steht im Rechenkern mit dem Jahr, ab dem sie gilt: Der Reformationstag ist in Bremen, Hamburg, Niedersachsen und Schleswig-Holstein seit 2018 Feiertag, der Frauentag in Berlin seit 2019 und in Mecklenburg-Vorpommern seit 2023. Berlin hat 2028 einen einmaligen Feiertag am 17. Juni.</p>
+    <p>Fällt ein Feiertag auf einen Samstag oder Sonntag, wird er in Deutschland nicht nachgeholt; anders als in Großbritannien oder Spanien gibt es keinen Ersatztag. Die Rechner zählen ihn trotzdem in der Liste, als Brücke wirkt er aber nicht.</p>
+
+    <h2>Ostern und die beweglichen Feiertage</h2>
+    <p>Ostersonntag berechnen wir mit der <Fragment set:html={s('ostern-ptb', 'Gaußschen Osterformel in der Fassung der PTB')} />. Karfreitag liegt zwei Tage davor, Ostermontag einen Tag danach, Christi Himmelfahrt 39 Tage, Pfingstmontag 50 Tage und Fronleichnam 60 Tage danach. Zur Kontrolle rechnet ein zweites, unabhängiges Verfahren (Meeus, Jones, Butcher) jedes Jahr von 1600 bis 2600 nach; beide stimmen in allen tausend Jahren überein. Der Buß- und Bettag ist der Mittwoch vor dem 23. November, die Zeitumstellung der letzte Sonntag im März und im Oktober nach <Fragment set:html={s('sozv', '§ 2 Sommerzeitverordnung')} />.</p>
+
+    <h2>Feiertage, die nur in einem Teil eines Landes gelten</h2>
+    <ul>
+      <li><strong>Mariä Himmelfahrt in Bayern</strong>: Feiertag in Gemeinden mit überwiegend katholischer Bevölkerung. Nach der Feststellung des <Fragment set:html={s('by-mh', 'Landesamts für Statistik')} /> auf Grundlage des Zensus {M.zensus} sind das seit dem {d(M.stand)} {formatNumber(M.mit, 0, lang)} von {formatNumber(M.gemeinden, 0, lang)} Gemeinden. Die Gemeindesuche zeigt jede einzelne.</li>
+      <li><strong>Augsburger Hohes Friedensfest</strong> am 8. August: nur im Stadtgebiet Augsburg, nach <Fragment set:html={s('ftg-by', 'Art. 1 Abs. 2 FTG')} />.</li>
+      <li><strong>Fronleichnam in Sachsen</strong>: in den katholisch geprägten Gemeinden der Lausitz, die die <Fragment set:html={s('sn-fl', 'Fronleichnamsverordnung')} /> aufzählt.</li>
+      <li><strong>Fronleichnam in Thüringen</strong>: nach <Fragment set:html={s('ftg-th', '§ 10 ThürFGtG')} /> dort, wo der Tag 1994 Feiertag war, vor allem im Eichsfeld. Eine amtliche Liste der Gemeinden ist nicht veröffentlicht; der Rechner lässt Sie deshalb selbst wählen.</li>
+    </ul>
+
+    <h2>Wie der Optimierer rechnet</h2>
+    <p>Das Jahr wird in Blöcke zerlegt: freie Blöcke aus Wochenenden und Feiertagen, Arbeitsblöcke aus Montag bis Freitag. Nimmt man alle Tage eines Arbeitsblocks frei, verbinden sich die beiden freien Blöcke daneben. Der Optimierer sucht unter allen Kombinationen die, die mit Ihrem Budget die meisten freien Tage am Stück ergibt, und bei Gleichstand die mit weniger Urlaubstagen. Das Verfahren ist eine dynamische Programmierung über alle Arbeitsblöcke des Jahres, also exakt und keine Faustregel. Jede Urlaubskette muss an einen Feiertag grenzen, der auf einen Werktag fällt; eine gewöhnliche Urlaubswoche ohne Feiertag bleibt als „frei planbar“ übrig. Beispiel Nordrhein-Westfalen 2027: Mit {p10.urlaub} Urlaubstagen ergeben sich {p10.frei} freie Tage in {p10.bloecke.length} Blöcken.</p>
+    <p>Urlaubstage zählen nur im gewählten Jahr. Ein Block, der über den Jahreswechsel reicht, wird mit allen freien Tagen gezählt, verbraucht aber nur die Urlaubstage des Jahres. Heiligabend und Silvester sind rechtlich Arbeitstage; wer sie durch Tarifvertrag frei hat, stellt das unter „Weitere Angaben“ ein.</p>
+
+    <h2>Arbeitstage und Kalenderwochen</h2>
+    <p>Arbeitstage sind Montag bis Freitag ohne gesetzliche Feiertage des gewählten Ortes. Die Kalenderwoche folgt ISO 8601: Woche 1 ist die Woche mit dem ersten Donnerstag des Jahres. Den gesetzlichen Mindesturlaub rechnen wir nach <Fragment set:html={s('burlg3', '§ 3 BUrlG')} /> (24 Werktage bei sechs Tagen) und anteilig nach <Fragment set:html={s('burlg5', '§ 5 BUrlG')} />.</p>
+
+    <h2>Grenzen</h2>
+    <p>Die Rechner kennen keine Betriebsferien, keine Schichtpläne und keine Tarifverträge. Sie behandeln die gesetzlichen Feiertage, keine Schulferien und keine kirchlichen Feiertage ohne Arbeitsruhe wie den Gründonnerstag. Für Thüringen fehlt eine amtliche Gemeindeliste zu Fronleichnam.</p>
+
+    <h2>Aktualisierung</h2>
+    <p>Wir lesen die Feiertagsgesetze der Länder regelmäßig neu. Jede Änderung geht erst online, wenn alle Tests wieder bestehen. Fehler melden Sie über die <a href={route('contact', lang)}>Kontaktseite</a>; wie wir korrigieren, steht in den <a href={route('editorial', lang)}>Redaktionsgrundsätzen</a>.</p>
+  </article>
+</PageLayout>

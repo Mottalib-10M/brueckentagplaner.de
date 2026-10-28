@@ -1,0 +1,29 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { SITE_URL } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { breadcrumbSchema } from '../../lib/seo';
+const lang = 'de';
+const code = (name: string, t: string, h: number) => `<iframe src="${SITE_URL}/embed/${lang}/${name}/" title="${t}" width="100%" height="${h}" style="border:0;max-width:1100px" loading="lazy"></iframe>`;
+const items = [
+  { name: 'brueckentage-optimierer', h2: 'Brückentage-Optimierer', text: 'Bundesland, Jahr und Urlaubstage: Ihre Leser sehen den besten Plan und alle Brücken des Jahres.', t: 'Brückentage-Optimierer', h: 980 },
+  { name: 'feiertage', h2: 'Feiertage nach Bundesland', text: 'Die gesetzlichen Feiertage jedes Landes für 2026 bis 2028, mit Wochentag und Teil-Feiertagen.', t: 'Feiertage nach Bundesland', h: 900 },
+];
+---
+<PageLayout title="Brückentage-Rechner kostenlos einbinden: Optimierer, Feiertage" description="Brückentage-Optimierer und Feiertagsliste kostenlos per iframe einbinden: Code kopieren, neue Jahre und geänderte Feiertage erscheinen von selbst auf Ihrer Seite." lang={lang} noindex={true} jsonLd={[breadcrumbSchema([{ name: 'Start', path: route('home', lang) }, { name: 'Widget', path: route('widget', lang) }])]} breadcrumbs={[{ label: 'Widget' }]} showAuthor={false}>
+  <header class="mb-6">
+    <h1 class="text-3xl font-bold text-navy-900 md:text-4xl">Brückentage-Rechner einbinden</h1>
+    <p class="mt-3 text-lg text-navy-700">Für Betriebsräte, Personalabteilungen, Vereine und Lokalzeitungen: einmal kopieren, neue Jahre erscheinen von selbst.</p>
+  </header>
+  <div class="prose prose-slate max-w-none">
+    {items.map((i) => (<>
+      <h2>{i.h2}</h2>
+      <p>{i.text}</p>
+      <pre class="overflow-x-auto rounded-lg bg-navy-900 p-4 text-sm text-white"><code>{code(i.name, i.t, i.h)}</code></pre>
+    </>))}
+    <p>Für die englische Fassung ersetzen Sie <code>/embed/de/</code> durch <code>/embed/en/</code>. Bedingungen: Der Quellenlink unter dem Rechner bleibt sichtbar, der Rechner wird nicht verändert und ohne Gewähr bereitgestellt. Was Ihre Leser eingeben, bleibt auf deren Gerät. Fragen über die <a href={route('contact', lang)}>Kontaktseite</a>.</p>
+  </div>
+  <div class="mt-8 overflow-hidden rounded-xl border border-navy-200">
+    <iframe src={`/embed/${lang}/brueckentage-optimierer/`} title="Brückentage-Optimierer" width="100%" height="980" style="border:0" loading="lazy"></iframe>
+  </div>
+</PageLayout>

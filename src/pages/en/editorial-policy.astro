@@ -1,0 +1,27 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, REVIEW_CYCLE_MONTHS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'en';
+---
+<PageLayout title="Editorial policy: sources, testing and corrections" description="Where the public holidays, municipality lists and dates come from, in what order we read sources, how the calculators are tested and what happens when we get something wrong." lang={lang} noindex={true} breadcrumbs={[{ label: 'Editorial policy' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Editorial policy and corrections</h1>
+    <p>Book your leave around a holiday that does not exist and you either find a locked door on a working day or waste a leave day. This page explains where every date comes from and what happens when something is wrong.</p>
+    <h2>Responsibility</h2><p>Content and calculators are the responsibility of {AUTHOR_NAME}. Contact: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Order of sources</h2>
+    <ol>
+      <li><strong>Acts and ordinances</strong> as in force, on the official state portals: the sixteen holiday acts, Saxony's Corpus Christi ordinance, Thuringia's holiday and commemoration act, the Unification Treaty and the federal Summer Time Ordinance;</li>
+      <li><strong>Official determinations</strong>: the Bavarian State Office for Statistics list for Assumption Day;</li>
+      <li><strong>Computation rules</strong>: the Easter formula published by the PTB and ISO 8601 week numbering.</li>
+    </ol>
+    <p>Calendar sites, travel portals and newspaper articles are not a source for a public holiday. Where no official list exists, as for Corpus Christi in Thuringia, we say so explicitly.</p>
+    <h2>Computed, not copied</h2><p>No date on this site is typed by hand. An engine derives each holiday from its rule (fixed day, offset from Easter, the Wednesday before 23 November). Automated tests compare Easter with a second, independent formula over a thousand years and with the PTB Easter table, count every state's holidays and check the planner on every change.</p>
+    <h2>Review cycle</h2><p>A full review at least every {REVIEW_CYCLE_MONTHS} months and after every change to a holiday act. New holidays are added only once the act is promulgated.</p>
+    <h2>Handling errors</h2>
+    <ol><li>Check against the source.</li><li>Fix the rule in the engine and add a test.</li><li>New date on every page.</li></ol>
+    <h2>Independence</h2><p>No money from travel companies, hotels or authorities. No affiliate links, no paid content, no lead forms.</p>
+    <p>See also <a href={route('method', lang)}>Method</a>. Version of {displayDate(LAST_UPDATED, 'en-GB')}.</p>
+  </div>
+</PageLayout>

@@ -1,0 +1,22 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { CONTACT_EMAIL, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { contactPageSchema } from '../../lib/seo';
+const lang = 'en';
+const description = 'Write to us if a public holiday, a date or a municipality looks wrong, or if you would like to embed the bridge-day planner on your own website.';
+---
+<PageLayout title={`Contact ${SITE_NAMES[lang]}: report an error, embed the planner`} description={description} lang={lang} noindex={true} jsonLd={[contactPageSchema({ name: 'Contact', description, path: route('contact', lang), lang })]} breadcrumbs={[{ label: 'Contact' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Contact</h1>
+    <p>Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. We usually reply within a week.</p>
+    <h2>A holiday or date looks wrong</h2>
+    <p>Tell us the page, the state, the year and, if you can, the provision in your state's holiday act or ordinance. We check against the source and correct within a few days.</p>
+    <h2>Your municipality is missing or misclassified</h2>
+    <p>For Bavaria we use the State Office for Statistics list for Assumption Day, for Saxony the Corpus Christi ordinance. If your municipality is missing or celebrates differently, send us its exact name and district.</p>
+    <h2>Embed the planner</h2>
+    <p>Works councils, HR teams, clubs and local newspapers can embed the bridge-day planner and the holiday list for free: <a href={route('widget', lang)}>Embed</a>.</p>
+    <h2>What we do not do</h2>
+    <p>No legal advice on leave requests, no school holiday information and no travel booking.</p>
+  </div>
+</PageLayout>

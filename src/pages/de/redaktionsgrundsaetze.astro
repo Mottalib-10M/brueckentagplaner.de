@@ -1,0 +1,27 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, REVIEW_CYCLE_MONTHS } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'de';
+---
+<PageLayout title="Redaktionsgrundsätze: Quellen, Prüfung und Korrekturen" description="Woher Feiertage, Gemeindelisten und Termine kommen, in welcher Rangfolge wir Quellen lesen, wie die Rechner getestet werden und was bei einem Fehler geschieht." lang={lang} noindex={true} breadcrumbs={[{ label: 'Redaktionsgrundsätze' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Redaktionsgrundsätze und Korrekturen</h1>
+    <p>Wer seinen Urlaub nach einem falschen Feiertag einreicht, steht am Ende an einem Arbeitstag vor verschlossener Tür oder verschenkt einen Urlaubstag. Deshalb steht hier, woher jedes Datum kommt und was passiert, wenn etwas nicht stimmt.</p>
+    <h2>Verantwortung</h2><p>Inhalte und Rechner verantwortet {AUTHOR_NAME}. Kontakt: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>Rangfolge der Quellen</h2>
+    <ol>
+      <li><strong>Gesetze und Verordnungen</strong> in der geltenden Fassung auf den amtlichen Portalen der Länder: die sechzehn Feiertagsgesetze, die Fronleichnamsverordnung in Sachsen, das Feier- und Gedenktagsgesetz in Thüringen, der Einigungsvertrag und die Sommerzeitverordnung des Bundes;</li>
+      <li><strong>Amtliche Feststellungen</strong>: die Liste des Bayerischen Landesamts für Statistik zu Mariä Himmelfahrt;</li>
+      <li><strong>Rechenvorschriften</strong>: die Osterformel der Physikalisch-Technischen Bundesanstalt und die Kalenderwoche nach ISO 8601.</li>
+    </ol>
+    <p>Kalenderseiten, Reiseportale und Zeitungsartikel sind keine Quelle für einen Feiertag. Wo eine amtliche Liste fehlt, etwa für Fronleichnam in Thüringen, sagen wir das ausdrücklich.</p>
+    <h2>Gerechnet, nicht abgetippt</h2><p>Kein Datum dieser Seite ist von Hand geschrieben. Ein Rechenkern leitet jeden Feiertag aus seiner Regel ab (fester Tag, Abstand zu Ostern, Mittwoch vor dem 23. November). Automatische Tests vergleichen Ostern mit einer zweiten, unabhängigen Formel für tausend Jahre und mit der Ostertabelle der PTB, zählen die Feiertage jedes Landes und prüfen den Optimierer bei jeder Änderung.</p>
+    <h2>Rhythmus</h2><p>Vollständige Durchsicht mindestens alle {REVIEW_CYCLE_MONTHS} Monate und nach jeder Änderung eines Feiertagsgesetzes. Neue Feiertage werden erst übernommen, wenn das Gesetz verkündet ist.</p>
+    <h2>Umgang mit Fehlern</h2>
+    <ol><li>Prüfung an der Quelle.</li><li>Korrektur der Regel im Rechenkern und ein neuer Test.</li><li>Neues Datum auf allen Seiten.</li></ol>
+    <h2>Unabhängigkeit</h2><p>Kein Geld von Reiseanbietern, Hotels oder Behörden. Keine Partnerlinks, keine bezahlten Beiträge, kein Formular zur Kundengewinnung.</p>
+    <p>Siehe auch <a href={route('method', lang)}>Methode</a>. Fassung vom {displayDate(LAST_UPDATED, 'de-DE')}.</p>
+  </div>
+</PageLayout>

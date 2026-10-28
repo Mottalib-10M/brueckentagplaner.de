@@ -1,0 +1,214 @@
+{
+ "_lisezmoi": "Paramètres datés du site. Chaque source a été relue le 2026-10-28 ; les dates des fériés sont calculées par src/lib/engine (jamais tapées).",
+ "year": 2026,
+ "retrieved_at": "2026-10-28",
+ "valid_from": "2026-01-01",
+ "valid_to": "2028-12-31",
+ "jahre": [
+  2026,
+  2027,
+  2028
+ ],
+ "bayern_mh": {
+  "gemeinden": 2056,
+  "mit": 1708,
+  "ohne": 348,
+  "stand": "2025-08-15",
+  "zensus": 2022
+ },
+ "urlaub": {
+  "mindestWerktage": 24,
+  "tageBasis": 6
+ },
+ "sources": {
+  "ftg-bw": {
+   "url": "https://www.landesrecht-bw.de/bsbw/document/jlr-FeiertGBWrahmen",
+   "label": {
+    "de": "Baden-Württemberg: Gesetz über die Sonntage und Feiertage (Feiertagsgesetz), § 1",
+    "en": "Baden-Württemberg: Sunday and Public Holiday Act, section 1"
+   }
+  },
+  "ftg-by": {
+   "url": "https://www.gesetze-bayern.de/Content/Document/BayFTG-1",
+   "label": {
+    "de": "Bayern: Feiertagsgesetz (FTG), Art. 1",
+    "en": "Bavaria: Public Holiday Act (FTG), Art. 1"
+   }
+  },
+  "by-mh": {
+   "url": "https://www.statistik.bayern.de/statistik/gebiet_bevoelkerung/zensus/himmelfahrt/index.php",
+   "label": {
+    "de": "Bayerisches Landesamt für Statistik: Mariä Himmelfahrt, Gemeinden mit überwiegend katholischer Bevölkerung (Zensus 2022)",
+    "en": "Bavarian State Office for Statistics: municipalities with a predominantly Catholic population for Assumption Day (2022 census)"
+   }
+  },
+  "ftg-be": {
+   "url": "https://gesetze.berlin.de/perma?a=FeiertG_BE",
+   "label": {
+    "de": "Berlin: Gesetz über die Sonn- und Feiertage (FeiertG), § 1",
+    "en": "Berlin: Sunday and Public Holiday Act (FeiertG), section 1"
+   }
+  },
+  "ftg-bb": {
+   "url": "https://bravors.brandenburg.de/gesetze/ftg_2015",
+   "label": {
+    "de": "Brandenburg: Feiertagsgesetz (FTG), § 2",
+    "en": "Brandenburg: Public Holiday Act (FTG), section 2"
+   }
+  },
+  "ftg-hb": {
+   "url": "https://www.transparenz.bremen.de/metainformationen/gesetz-ueber-die-sonn-gedenk-und-feiertage-vom-12-november-1954-74780",
+   "label": {
+    "de": "Bremen: Gesetz über die Sonn-, Gedenk- und Feiertage, § 2",
+    "en": "Bremen: Act on Sundays, Days of Remembrance and Public Holidays, section 2"
+   }
+  },
+  "ftg-hh": {
+   "url": "https://www.landesrecht-hamburg.de/bsha/document/jlr-FeiertGHArahmen",
+   "label": {
+    "de": "Hamburg: Gesetz über Sonntage, Feiertage, Gedenktage und Trauertage (Feiertagsgesetz), § 1",
+    "en": "Hamburg: Public Holiday Act, section 1"
+   }
+  },
+  "ftg-he": {
+   "url": "https://www.rv.hessenrecht.hessen.de/bshe/document/jlr-FeiertGHE1952rahmen",
+   "label": {
+    "de": "Hessen: Hessisches Feiertagsgesetz (HFeiertagsG), § 1",
+    "en": "Hesse: Public Holiday Act (HFeiertagsG), section 1"
+   }
+  },
+  "ftg-mv": {
+   "url": "https://www.landesrecht-mv.de/bsmv/document/jlr-FTGMVrahmen",
+   "label": {
+    "de": "Mecklenburg-Vorpommern: Feiertagsgesetz (FTG M-V), § 2",
+    "en": "Mecklenburg-Western Pomerania: Public Holiday Act (FTG M-V), section 2"
+   }
+  },
+  "ftg-ni": {
+   "url": "https://www.mi.niedersachsen.de/themen/allgemeine_angelegenheiten_inneren/feiertagsrecht/feiertagsgesetz-61491.html",
+   "label": {
+    "de": "Niedersachsen: Niedersächsisches Gesetz über die Feiertage (NFeiertagsG), § 2, Innenministerium",
+    "en": "Lower Saxony: Public Holiday Act (NFeiertagsG), section 2, Ministry of the Interior"
+   }
+  },
+  "ftg-nw": {
+   "url": "https://recht.nrw.de/lrgv/gesetz/01012000-bekanntmachung-der-neufassung-des-gesetzes-ueber-die-sonn-und-feiertage/",
+   "label": {
+    "de": "Nordrhein-Westfalen: Gesetz über die Sonn- und Feiertage (Feiertagsgesetz NW), § 2",
+    "en": "North Rhine-Westphalia: Sunday and Public Holiday Act (Feiertagsgesetz NW), section 2"
+   }
+  },
+  "ftg-rp": {
+   "url": "https://landesrecht.rlp.de/bsrp/document/jlr-FeiertGRPrahmen",
+   "label": {
+    "de": "Rheinland-Pfalz: Landesgesetz über den Schutz der Sonn- und Feiertage (LFtG), § 2",
+    "en": "Rhineland-Palatinate: Sunday and Public Holiday Protection Act (LFtG), section 2"
+   }
+  },
+  "ftg-sl": {
+   "url": "https://recht.saarland.de/perma?a=FeiertG_SL",
+   "label": {
+    "de": "Saarland: Gesetz über die Sonn- und Feiertage (SFG), § 2",
+    "en": "Saarland: Sunday and Public Holiday Act (SFG), section 2"
+   }
+  },
+  "ftg-sn": {
+   "url": "https://www.revosax.sachsen.de/vorschrift/3997-SaechsSFG",
+   "label": {
+    "de": "Sachsen: Gesetz über Sonn- und Feiertage im Freistaat Sachsen (SächsSFG), § 1",
+    "en": "Saxony: Sunday and Public Holiday Act (SächsSFG), section 1"
+   }
+  },
+  "sn-fl": {
+   "url": "https://www.revosax.sachsen.de/vorschrift/4142-FronleichnamsVO",
+   "label": {
+    "de": "Sachsen: Verordnung über den Feiertag Fronleichnam (FronleichnamsVO)",
+    "en": "Saxony: Corpus Christi Ordinance (FronleichnamsVO)"
+   }
+  },
+  "ftg-st": {
+   "url": "https://www.landesrecht.sachsen-anhalt.de/perma?a=FeiertG_ST",
+   "label": {
+    "de": "Sachsen-Anhalt: Gesetz über die Sonn- und Feiertage (FeiertG LSA), § 2",
+    "en": "Saxony-Anhalt: Sunday and Public Holiday Act (FeiertG LSA), section 2"
+   }
+  },
+  "ftg-sh": {
+   "url": "https://www.gesetze-rechtsprechung.sh.juris.de/perma?a=FeiertG_SH",
+   "label": {
+    "de": "Schleswig-Holstein: Gesetz über Sonn- und Feiertage (SFTG), § 2",
+    "en": "Schleswig-Holstein: Sunday and Public Holiday Act (SFTG), section 2"
+   }
+  },
+  "ftg-th": {
+   "url": "https://landesrecht.thueringen.de/bsth/document/jlr-FeiertGTHrahmen",
+   "label": {
+    "de": "Thüringen: Thüringer Feier- und Gedenktagsgesetz (ThürFGtG), §§ 2 und 10",
+    "en": "Thuringia: Public Holiday and Commemoration Act (ThürFGtG), sections 2 and 10"
+   }
+  },
+  "einigungsvertrag": {
+   "url": "https://www.gesetze-im-internet.de/einigvtr/art_2.html",
+   "label": {
+    "de": "Einigungsvertrag, Art. 2 Abs. 2: Tag der Deutschen Einheit",
+    "en": "Unification Treaty, Art. 2(2): German Unity Day"
+   }
+  },
+  "ostern-ptb": {
+   "url": "https://www.ptb.de/cms/ptb/fachabteilungen/abt4/fb-44/ag-441/darstellung-der-gesetzlichen-zeit/wann-ist-ostern.html",
+   "label": {
+    "de": "Physikalisch-Technische Bundesanstalt: Wann ist Ostern? (Gaußsche Osterformel)",
+    "en": "Physikalisch-Technische Bundesanstalt (PTB): When is Easter? (Gauss's Easter formula)"
+   }
+  },
+  "sozv": {
+   "url": "https://www.gesetze-im-internet.de/sozv/__2.html",
+   "label": {
+    "de": "Sommerzeitverordnung (SoZV), § 2: Beginn und Ende der Sommerzeit",
+    "en": "Summer Time Ordinance (SoZV), section 2: start and end of summer time"
+   }
+  },
+  "eu-sommerzeit": {
+   "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32000L0084",
+   "label": {
+    "de": "Richtlinie 2000/84/EG zur Regelung der Sommerzeit",
+    "en": "Directive 2000/84/EC on summer-time arrangements"
+   }
+  },
+  "burlg3": {
+   "url": "https://www.gesetze-im-internet.de/burlg/__3.html",
+   "label": {
+    "de": "Bundesurlaubsgesetz (BUrlG), § 3: Dauer des Urlaubs",
+    "en": "Federal Leave Act (BUrlG), section 3: length of leave"
+   }
+  },
+  "burlg5": {
+   "url": "https://www.gesetze-im-internet.de/burlg/__5.html",
+   "label": {
+    "de": "Bundesurlaubsgesetz (BUrlG), § 5: Teilurlaub",
+    "en": "Federal Leave Act (BUrlG), section 5: partial leave"
+   }
+  },
+  "entgfg2": {
+   "url": "https://www.gesetze-im-internet.de/entgfg/__2.html",
+   "label": {
+    "de": "Entgeltfortzahlungsgesetz (EntgFG), § 2: Entgeltzahlung an Feiertagen",
+    "en": "Continued Remuneration Act (EntgFG), section 2: pay on public holidays"
+   }
+  },
+  "burlg7": {
+   "url": "https://www.gesetze-im-internet.de/burlg/__7.html",
+   "label": {
+    "de": "Bundesurlaubsgesetz (BUrlG), § 7: Zeitpunkt, Übertragbarkeit und Abgeltung",
+    "en": "Federal Leave Act (BUrlG), section 7: timing, carry-over and payment in lieu"
+   }
+  },
+  "burlg4": {
+   "url": "https://www.gesetze-im-internet.de/burlg/__4.html",
+   "label": {
+    "de": "Bundesurlaubsgesetz (BUrlG), § 4: Wartezeit",
+    "en": "Federal Leave Act (BUrlG), section 4: waiting period"
+   }
+  }
+ }
+}

@@ -1,0 +1,35 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { route } from '../../i18n/routes';
+import { AUTHOR_NAME, AUTHOR_DESC, CONTACT_EMAIL, SITE_NAMES } from '../../data/site-config';
+import { srcLink } from '../../lib/helpers';
+import { KIT as K } from '../../lib/kit';
+import { formatNumber } from '../../lib/format';
+import { profilePageSchema, breadcrumbSchema } from '../../lib/seo';
+const lang = 'de';
+const path = route('about', lang);
+const title = 'Brückentage-Rechner 2027 Herausgeber: Wer wir sind, Quellen';
+const description = 'Wer den Brückentage-Rechner 2027 herausgibt: Radif Partners, unabhängig und ohne Reiseangebote. Woher Feiertage, Gemeindelisten und Osterdaten stammen.';
+const s = (k: string, t: string) => srcLink(k, lang, t);
+const M = K.P.bayern_mh;
+---
+<PageLayout title={title} description={description} lang={lang} jsonLd={[profilePageSchema({ path, lang }), breadcrumbSchema([{ name: 'Start', path: route('home', lang) }, { name: 'Über uns', path }])]} breadcrumbs={[{ label: 'Über uns' }]}>
+  <article class="prose prose-slate max-w-none">
+    <h1>Über {SITE_NAMES[lang]}</h1>
+    <p>{AUTHOR_DESC.de}</p>
+    <h2>Warum es diese Seite gibt</h2>
+    <p>Wer im Herbst seinen Urlaub für das nächste Jahr einreicht, sucht die Tage, an denen ein einzelner Urlaubstag ein langes Wochenende macht. Die meisten Listen dazu stehen auf Seiten, die anschließend eine Reise verkaufen wollen, nennen nur bundesweite Termine oder vergessen, dass in Augsburg zwei Feiertage mehr gelten als in Nürnberg. Diese Seite rechnet für jedes der sechzehn Länder getrennt, berücksichtigt Feiertage, die nur in einem Teil eines Landes gelten, und zeigt den besten Plan für genau die Zahl an Urlaubstagen, die Sie einsetzen wollen.</p>
+    <h2>Wer sie herausgibt</h2>
+    <p>Herausgeber ist {AUTHOR_NAME}, ein Unternehmen, das Werkzeuge aus öffentlichen Regeln und Daten baut. {AUTHOR_NAME} ist keine Behörde und keine Kanzlei, steht mit keiner Landesregierung in Verbindung und verwendet keine Wappen oder Logos. Die Seite verkauft keine Reisen, keine Hotels und keine Kalender und enthält keine Partnerlinks.</p>
+    <LegalIdentity lang={lang} />
+    <h2>Woher die Daten kommen</h2>
+    <p>Die Feiertage stammen aus den sechzehn Feiertagsgesetzen der Länder, etwa dem <Fragment set:html={s('ftg-by', 'bayerischen Feiertagsgesetz')} /> oder dem <Fragment set:html={s('ftg-nw', 'Feiertagsgesetz NW')} />; der 3. Oktober aus dem <Fragment set:html={s('einigungsvertrag', 'Einigungsvertrag')} />. Welche {formatNumber(M.mit, 0, lang)} von {formatNumber(M.gemeinden, 0, lang)} bayerischen Gemeinden am 15. August frei haben, hat das <Fragment set:html={s('by-mh', 'Bayerische Landesamt für Statistik')} /> festgestellt; die Liste ist hier durchsuchbar. Ostern berechnen wir mit der <Fragment set:html={s('ostern-ptb', 'Osterformel der Physikalisch-Technischen Bundesanstalt')} />, die Zeitumstellung nach der <Fragment set:html={s('sozv', 'Sommerzeitverordnung')} />. Wie die Brücken gerechnet werden, steht unter <a href={route('method', lang)}>Methode</a>; wie wir korrigieren, in den <a href={route('editorial', lang)}>Redaktionsgrundsätzen</a>.</p>
+    <h2>Ihre Daten</h2>
+    <p>Alle Rechner laufen in Ihrem Browser. Bundesland, Urlaubstage und Gemeinde, die Sie eingeben, werden weder gesendet noch gespeichert. Es gibt kein Konto und kein Formular. Einzelheiten stehen in der <a href={route('privacy', lang)}>Datenschutzerklärung</a>.</p>
+    <h2>Was die Seite nicht leistet</h2>
+    <p>Sie genehmigt keinen Urlaub und kennt Ihren Arbeitsvertrag nicht. Ob Heiligabend und Silvester bei Ihnen frei sind, ob Ihr Betrieb an Brückentagen schließt oder ob ein Tarifvertrag mehr Urlaub gibt, steht in Ihren Unterlagen. Schulferien behandelt die Seite nicht.</p>
+    <h2>Schreiben Sie uns</h2>
+    <p><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>, wenn ein Feiertag, ein Datum oder eine Gemeinde nicht stimmt.</p>
+  </article>
+</PageLayout>
